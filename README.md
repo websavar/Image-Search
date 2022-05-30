@@ -9,3 +9,6 @@
 1. Run `npm install` to install required dependencies
 2. Run `npm start` to run the project and Open http://localhost:8080
 3. Run `npm test` to run the testing
+
+## Online Demo
+  [https://searchquery.netlify.app/](https://searchquery.netlify.app/)

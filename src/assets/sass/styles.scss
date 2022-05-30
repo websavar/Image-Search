@@ -48,18 +48,6 @@ h2 {
   font-weight: 700;
 }
 
-.search-box {
-  border: 1px solid $color-gray-light;
-  display: flex;
-  
-  .search-input{
-    padding: 0 10px;
-    font-size: 14px;
-    outline: none;
-    width: 100%;
-  }
-}
-
 .images-container {
   border: 1px solid $color-gray-light;
   margin: auto;
@@ -75,5 +63,31 @@ h2 {
       object-fit: cover;
       width: 100%;
     }
+  }
+}
+
+.search-box {
+  display: flex;
+  
+  .form-control {
+    padding-left: 2.375rem;
+  }
+  
+  .form-group {
+    width: 100%;
+  }
+
+  span {
+    color: $color-text;
+    display: block;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    font-size: 14px;
+    outline: none;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    width: 2.375rem;
+    z-index: 2;
   }
 }

@@ -5,6 +5,7 @@ import {
   ImageDataInterFace,
   SearchValueInterface
 } from 'interfaces';
+import { Loader } from "components";
 
 const SearchResult: React.FC<{ searchValue: SearchValueInterface }> = ({ searchValue }) => {
 
@@ -19,12 +20,11 @@ const SearchResult: React.FC<{ searchValue: SearchValueInterface }> = ({ searchV
   } = useFetchResults(searchValue)
 
   return isLoading ? (
-    <div>Loading...</div>
+    <Loader />
   ) : isError ? (
     <div>Error: {(error as Error).message}</div>
   ) : (
     <div className="row images-container">
-
       {results?.pages.map((page, i) => (
         <React.Fragment key={i}>
           {page.data.map((image: ImageDataInterFace) => (
@@ -42,14 +42,18 @@ const SearchResult: React.FC<{ searchValue: SearchValueInterface }> = ({ searchV
       ))}
 
       {hasNextPage &&
-        <div className='btn-more'>
-          <button onClick={() => fetchNextPage()}>
+        <div className="d-flex justify-content-center">
+          <button
+            type="button"
+            className="btn btn-sm btn-outline-secondary ms-2 col-2 mb-2"
+            onClick={() => fetchNextPage()}
+          >
             Load More
           </button>
         </div>
       }
 
-      {isFetchingNextPage && <div>Loading...</div>}
+      {isFetchingNextPage && <Loader />}
     </div>
   );
 };

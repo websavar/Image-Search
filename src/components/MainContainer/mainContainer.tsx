@@ -16,21 +16,26 @@ const MainContainer = () => {
 
   return (
     <main className="container-fluid">
+
+
       <div className="search-box">
-        <input
-          className="search-input"
-          autoFocus
-          type="search"
-          placeholder="Search for pictures..."
-          onChange={e => changeHandler(e)}
-          value={searchInput}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') searchHandler();
-          }}
-        />
+        <div className="form-group">
+          <span className="fa fa-search"></span>
+          <input
+            className="search-input form-control"
+            autoFocus
+            type="search"
+            placeholder="Search for pictures..."
+            onChange={e => changeHandler(e)}
+            value={searchInput}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') searchHandler();
+            }}
+          />
+        </div>
         <button
           type="submit"
-          className="ms-2"
+          className="btn btn-outline-secondary ms-2"
           onClick={searchHandler}
         >
           Search
