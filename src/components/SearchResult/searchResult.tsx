@@ -66,5 +66,5 @@ const SearchResult: React.FC<{ searchValue: SearchValueInterface }> = ({ searchV
   );
 };
 
-export default SearchResult;
+export default React.memo(SearchResult);
 
