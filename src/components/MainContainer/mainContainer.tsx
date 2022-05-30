@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { SearchResult } from 'components';
 import { SearchValueInterface } from 'interfaces';
 
-
 const MainContainer = () => {
   const [searchInput, setSearchInput] = useState<string>('');
   const [searchValue, setSearchValue] = useState<SearchValueInterface>();

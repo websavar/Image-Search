@@ -9,11 +9,14 @@ export interface ImageDataInterFace {
 }
 
 export interface resultsInterface {
-  pages: {
-    data: ImageDataInterFace[]
-    nextPage: number;
-    totalPages: any
-  }[]
+  data: ImageDataInterFace[]
+  nextPage: number;
+  totalPages: any
+}
+
+export interface FetchResultsInterface {
+  ({ pageParam, queryKey }: { pageParam?: number | undefined, queryKey: any }
+  ): Promise<resultsInterface>
 }
 
 export type SearchValueInterface = string | undefined;
