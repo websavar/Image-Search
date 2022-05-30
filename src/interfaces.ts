@@ -1,6 +1,6 @@
-export interface resultsInterface {
-  alt_description: string
+export interface ImageDataInterFace {
   id: string
+  alt_description: string
   urls: {
     small: string
     full: string
@@ -8,4 +8,12 @@ export interface resultsInterface {
   }
 }
 
-export type searchValueInterface = string | undefined;
+export interface resultsInterface {
+  pages: {
+    data: ImageDataInterFace[]
+    nextPage: number;
+    totalPages: any
+  }[]
+}
+
+export type SearchValueInterface = string | undefined;

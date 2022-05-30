@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { SearchResult } from 'components';
-import { searchValueInterface } from 'interfaces';
+import { SearchValueInterface } from 'interfaces';
 
 
 const MainContainer = () => {
   const [searchInput, setSearchInput] = useState<string>('');
-  const [searchValue, setSearchValue] = useState<searchValueInterface>();
+  const [searchValue, setSearchValue] = useState<SearchValueInterface>();
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);

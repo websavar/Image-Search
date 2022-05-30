@@ -1,32 +1,67 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useInfiniteQuery } from "react-query";
+
+import { MaxPages } from 'constants/index';
+
 import api from 'api';
-import { resultsInterface, searchValueInterface } from 'interfaces';
+import { ImageDataInterFace, resultsInterface, SearchValueInterface } from 'interfaces';
 
-const SearchResult: React.FC<{ searchValue: searchValueInterface }> = ({ searchValue }) => {
+const SearchResult: React.FC<{ searchValue: SearchValueInterface }> = ({ searchValue }) => {
 
-  const [results, setResults] = useState<resultsInterface[]>([]);
+  const fetchResults = async ({ pageParam = 1 }) => {
+    const data = await api.getImagesData(pageParam, searchValue);
+    console.log("data", data, pageParam);
 
-  useEffect(() => {
-    const fetchImageData = async () => {
-      console.log('searchValue', searchValue);
-      const data = await api.getImagesData(searchValue);
-      console.log('data', data);
-      setResults(data.results);
-    }
+    return {
+      data: data.results,
+      nextPage: pageParam + 1,
+      totalPages: data.total_pages > MaxPages ? MaxPages : data.total_pages
+    };
+  };
 
-    fetchImageData();
-  }, [searchValue])
+  const {
+    data: results,
+    isLoading,
+    error,
+    fetchNextPage,
+    isFetchingNextPage
+  } = useInfiniteQuery(["photos", searchValue],
+    fetchResults,
+    {
+      getNextPageParam(lastPage) {
+        return lastPage.nextPage < lastPage.totalPages
+          ? lastPage.nextPage
+          : undefined;
+      }
+    });
+
+  console.log("results", results);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error</div>;
 
   return (
     <div className="row images-container">
-      {results.map((project) => (
-        <div className="image col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" key={project.id}>
-          <img
-            src={project.urls.small}
-            alt={project.alt_description}
-          />
-        </div>
+
+      {results?.pages.map((page, i) => (
+        <React.Fragment key={i}>
+          {page.data.map((image: ImageDataInterFace) => (
+            <div className="image col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" key={image.id}>
+              <img
+                src={image.urls.small}
+                alt={image.alt_description}
+              />
+            </div>
+          ))}
+        </React.Fragment>
       ))}
+
+      <div className='btn-more'>
+        <button onClick={() => fetchNextPage()}>
+          Load More
+        </button>
+      </div>
+
+      {isFetchingNextPage && <div>Loading...</div>}
     </div>
   );
 };
