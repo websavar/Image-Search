@@ -1,0 +1,12 @@
+@import 'assets/sass/settings.scss';
+
+header {
+  background-color: $color-primary;
+  color: white;
+  border-bottom: 2px solid $color-gray-light;
+  height: $navbar-height;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}

@@ -1,0 +1,49 @@
+@import 'settings';
+
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  color: $color-text;
+  font-family: $font-family !important;
+  height: 100%;
+  margin: 0;
+  overflow: unset !important;
+  padding: 0 !important;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $color-primary;
+  font-weight: 700;
+  text-decoration: none !important;
+  @include setTransition(.1s);
+
+  &:hover {
+    color: $color-secondary !important;
+  }
+}
+
+.App {
+  color: $color-text;
+  font-size: $font-size;
+  width: 100%;
+}
+
+main {
+  padding: 1.5rem !important;
+  margin-top: $navbar-height;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}

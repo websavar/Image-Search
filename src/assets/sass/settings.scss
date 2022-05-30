@@ -1,0 +1,37 @@
+/* colors */
+
+$color-primary: #2e9bef;
+$color-secondary: #d1d1d1;
+$color-error: rgb(255, 0, 64);
+$color-text: #494949;
+$color-gray-light: #e6e6e6;
+$color-bg: white;
+
+/* font styles */
+$font-size: 16px;
+$font-family: "Roboto",
+sans-serif;
+
+/* common styles */
+
+$navbar-height: 50px;
+$logo-height: 38px;
+$line-height: 1.5;
+
+/* mixin */
+
+@mixin setTransition($transitions...) {
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -o-transition: $transitions;
+  -ms-transition: $transitions;
+  transition: $transitions;
+}
+
+@mixin boxShadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -o-box-shadow: $shadow;
+  -ms-box-shadow: $shadow;
+  box-shadow: $shadow;
+}

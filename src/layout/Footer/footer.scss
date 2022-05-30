@@ -1,0 +1,22 @@
+@import 'assets/sass/settings.scss';
+
+footer {
+  background: $color-gray-light;
+  bottom: 0;
+  color: $color-primary;
+  font-size: .8rem;
+  padding: 1rem 4rem;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+
+  a {
+    padding: 0 10px;
+
+    &:hover {
+      color: rgba($color: $color-primary, $alpha: 0.7) !important;
+      text-decoration: underline;
+    }
+  }
+}

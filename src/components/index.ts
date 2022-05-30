@@ -1,0 +1,1 @@
+export { default as MainContainer } from 'components/MainContainer/mainContainer';
