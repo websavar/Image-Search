@@ -47,3 +47,33 @@ h2 {
   font-size: 1.2rem;
   font-weight: 700;
 }
+
+.search-box {
+  border: 1px solid $color-gray-light;
+  display: flex;
+  
+  .search-input{
+    padding: 0 10px;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+  }
+}
+
+.images-container {
+  border: 1px solid $color-gray-light;
+  margin: auto;
+  padding: 10px;
+
+  .image {
+    padding: 10px;
+    height: auto;
+
+    img {
+      height: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}

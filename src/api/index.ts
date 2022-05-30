@@ -1,20 +1,25 @@
-import { HTTP_METHODS } from "constants/enums";
 import { createApiRequest } from "./axios";
+import { HTTP_METHODS } from "constants/enums";
+import { PerPage } from "constants/index";
+import { searchValueInterface } from 'interfaces';
 
 const clientId = process.env.REACT_APP_CLIENT_ID;
+
 const errorHandler = (e: any) => console.log(`Error occurred while fetching data from the server ${e}`);
 
 class ApiCallCreator {
-  getImagesData(page: string, imageQuery: string) {
+  getImagesData(searchValue: searchValueInterface) {
+    console.log(searchValue);
+
     return createApiRequest(
       `/search/photos?
-      page=${page}&
-      query=${imageQuery}&
-      client_id=${clientId}`,
+      page=1&query=${searchValue}
+      &per_page=${PerPage}
+      &client_id=${clientId}`,
       HTTP_METHODS.GET,
       {}
     )
-      .then(res => res.data)
+      .then(res => res)
       .catch((e) => errorHandler(e));
   }
 }
